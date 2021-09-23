@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>#{msgs.AddToCart}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/giftTemplate.xhtml">
+		<ui:define name="contentpanel">
+			<h:panelGrid columns="2">
+				<h:graphicImage value="/resources/images/#{productControl.image}" />
+				<h:form>
+					<h:panelGrid>
+						<h1>#{productControl.product.name}</h1>
+						#{msgs.ProductQuantity}<h:inputText id="quantity" value="#{cartControl.productQuanity}" 
+						required="true" validator="#{rules.validateQuantity}" />
+						<h:message for="quantity" styleClass="errorMessage"></h:message>
+						#{msgs.ProductPrice}<h:outputText value="#{productControl.product.price}" />
+						<h:commandButton value="#{msgs.AddToCart}"
+							action="#{cartControl.addToCart}" />
+
+					</h:panelGrid>
+
+
+				</h:form>
+
+			</h:panelGrid>
+		</ui:define>
+	</ui:composition>
+
+
+
+
+
+
+</h:body>
+</html>

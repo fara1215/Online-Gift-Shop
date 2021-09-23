@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/giftTemplate.xhtml">
+		<ui:define name="contentpanel">
+			<h:form >
+				<h:dataTable value="#{cartControl.cartSummary }" var="product"
+					rules="all" border="1" headerClass="header"
+					rowClasses="oddrows,evenrows" captionClass="caption"
+					styleClass="tbl">
+					<f:facet name="caption">#{msgs.OrderSummary}</f:facet>
+					<h:column>
+						<f:facet name="header">#{msgs.ProductName}</f:facet>
+#{product.name}
+</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.ProductPrice}</f:facet>
+#{product.price}
+</h:column>
+					<h:column>
+						<f:facet name="header">#{msgs.ProductQuantity}</f:facet>
+#{cartControl.getProdQuantiy(product.image,product.price)}
+</h:column>
+
+					<h:column>
+						<f:facet name="header">Total Price</f:facet>
+#{cartControl.totalPriceOfAProduct}
+</h:column>
+				</h:dataTable>
+				<br />
+				<h:commandButton value="#{msgs.checkout}"
+					action="#{shoppingControl.checkout}" />
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+
+
+</h:body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="styles.css" />
+	<title>#{msgs.signup}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/giftTemplate.xhtml">
+		<ui:define name="contentpanel">
+			<h:form>
+				<h:panelGrid columns="2">
+       #{msgs.fname}
+       <h:panelGroup>
+						<h:inputText id="fname" value="#{accountCont.selected.firstName}"
+							required="true"
+							requiredMessage="#{msgs.msg_fname_required_field}" />
+						<h:message for="fname" styleClass="errorMessage" />
+					</h:panelGroup>
+     		
+       #{msgs.lname}
+       <h:inputText value="#{accountCont.selected.lastName}" />
+        #{msgs.state}
+         <h:panelGroup>
+						<h:inputText id="state" value="#{accountCont.selected.state}"
+							required="true"
+							requiredMessage="#{msgs.msg_state_required_field}" />
+						<h:message for="state" styleClass="errorMessage" />
+					</h:panelGroup>
+       
+        #{msgs.street}
+         <h:panelGroup>
+						<h:inputText id="street" value="#{accountCont.selected.street}"
+							required="true"
+							requiredMessage="#{msgs.msg_street_required_field}" />
+						<h:message for="street" styleClass="errorMessage" />
+					</h:panelGroup>
+      	
+        #{msgs.zip}
+         <h:panelGroup>
+						<h:inputText id="zip" value="#{accountCont.selected.zip}"
+							required="true" requiredMessage="#{msgs.msg_zip_required_field}" />
+						<h:message for="zip" styleClass="errorMessage" />
+					</h:panelGroup>
+     	
+        #{msgs.city}
+         <h:panelGroup>
+						<h:inputText id="city" value="#{accountCont.selected.city}"
+							required="true" requiredMessage="#{msgs.msg_city_required_field}" />
+						<h:message for="city" styleClass="errorMessage" />
+					</h:panelGroup>
+       	
+        #{msgs.email}
+         <h:panelGroup>
+						<h:inputText id="email" value="#{accountCont.selected.email}"
+							required="true"
+							requiredMessage="#{msgs.msg_email_required_field}"
+							validatorMessage="#{msgs.msg_email_validate_field}">
+							<f:validateRegex
+								pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+						</h:inputText>
+						<h:message for="email" styleClass="errorMessage" />
+					</h:panelGroup>
+  
+        #{msgs.password}
+         <h:panelGroup>
+						<h:inputSecret id="pass" value="#{accountCont.selected.password}"
+							required="true"
+							requiredMessage="#{msgs.msg_password_required_field}" />
+						<h:message for="pass" styleClass="errorMessage" />
+					</h:panelGroup>
+
+				</h:panelGrid>
+
+				<h:commandButton value="#{msgs.signup}"
+					action="#{accountCont.createAccount}" />
+
+
+			</h:form>
+
+			
+
+		</ui:define>
+
+
+	</ui:composition>
+
+</h:body>
+</html>
